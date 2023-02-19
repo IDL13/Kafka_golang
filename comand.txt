@@ -1,0 +1,18 @@
+# START ZOOKEEPER
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+
+# START SERVER
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+# CREATE A TOPIC TO STORE YOUR EVENTS
+.\bin\windows\kafka-topics.bat --create --topic quickstart-events --bootstrap-server localhost:9092
+
+
+# WRITE SOME EVENTS INTO THE TOPIC
+.bin\windows\kafka-console-producer.bat --topic quickstart-events --bootstrap-server localhost:9092
+
+
+# READ THE EVENTS
+.\bin\windows\kafka-console-consumer.bat --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
